@@ -1,0 +1,228 @@
+/* The Quiet Floor — presentation: dark archive night, warm lantern light. */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0a0c12;
+  color: #e8e2d0;
+  font-family: Georgia, 'Times New Roman', serif;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+#stage {
+  position: relative;
+  width: 960px;
+  max-width: 100%;
+  box-shadow: 0 0 0 1px #2a2f3d, 0 18px 60px rgba(0, 0, 0, 0.7);
+  background: #10131c;
+}
+
+canvas {
+  display: block;
+  width: 960px;
+  height: 640px;
+  max-width: 100%;
+  background: #141824;
+  cursor: crosshair;
+}
+
+/* ---- HUD ---- */
+
+#hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  background: linear-gradient(rgba(8, 10, 16, 0.92), rgba(8, 10, 16, 0.55) 80%, transparent);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  z-index: 5;
+}
+
+#hud .hud-left, #hud .hud-right { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+#hud .hud-center { flex: 1; display: flex; justify-content: center; }
+
+#hud-level { color: #f2c14e; font-weight: bold; }
+#hud-objective b, #hud-pebbles b { color: #f2c14e; }
+#hud-exit { color: #8a93a8; }
+#hud-exit.open { color: #7ddc8a; font-weight: bold; }
+#hud-timer { font-variant-numeric: tabular-nums; color: #cfd6e4; }
+
+#suspicion-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud-label { color: #9aa3b5; font-size: 11px; }
+
+#suspicion-bar {
+  width: 140px;
+  height: 12px;
+  border: 1px solid #4a5265;
+  background: #171b26;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#suspicion-fill {
+  height: 100%;
+  width: 0%;
+  background: #f2c14e;
+  transition: width 0.12s linear, background 0.2s;
+}
+
+#suspicion-state { min-width: 74px; font-weight: bold; color: #cfd6e4; }
+#suspicion-state.suspicious { color: #f2a13e; }
+#suspicion-state.alarm { color: #ff5a4e; }
+
+#hud button {
+  pointer-events: auto;
+  background: rgba(20, 24, 36, 0.9);
+  color: #e8e2d0;
+  border: 1px solid #4a5265;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+#hud button:hover { border-color: #f2c14e; color: #f2c14e; }
+
+/* ---- Banner + toast ---- */
+
+#banner {
+  position: absolute;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 22px;
+  background: rgba(120, 20, 14, 0.92);
+  border: 1px solid #ff5a4e;
+  color: #ffe9e5;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.22em;
+  border-radius: 4px;
+  z-index: 6;
+  pointer-events: none;
+}
+
+#toast {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  background: rgba(16, 20, 30, 0.92);
+  border: 1px solid #4a5265;
+  color: #e8e2d0;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* ---- Overlays ---- */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 70px;
+  background: rgba(8, 10, 16, 0.88);
+  z-index: 10;
+}
+
+.overlay h1 {
+  margin: 0 0 6px;
+  font-size: 44px;
+  letter-spacing: 0.18em;
+  color: #f2c14e;
+  text-shadow: 0 2px 18px rgba(242, 193, 78, 0.35);
+}
+
+.overlay .tagline {
+  margin: 0 0 18px;
+  font-style: italic;
+  color: #b9c0cf;
+  font-size: 17px;
+}
+
+.overlay .story, .overlay .rules {
+  max-width: 620px;
+  line-height: 1.55;
+  font-size: 15px;
+  color: #d8d2bd;
+}
+
+.overlay .howto {
+  margin: 10px 0 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 26px;
+  text-align: left;
+  font-size: 14px;
+  color: #c9cfdb;
+}
+
+.overlay .howto b { color: #f2c14e; }
+
+.overlay .stats {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #e8e2d0;
+  white-space: pre-line;
+}
+
+.overlay .tiny { font-size: 12px; color: #8a93a8; letter-spacing: 0.1em; }
+
+.overlay button {
+  margin-top: 14px;
+  padding: 12px 34px;
+  font-family: inherit;
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  color: #14100a;
+  background: #f2c14e;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.overlay button:hover { background: #ffd76a; }
+
+.overlay button.ghost {
+  background: transparent;
+  color: #b9c0cf;
+  border: 1px solid #4a5265;
+  padding: 9px 22px;
+  font-size: 13px;
+}
+
+.overlay button.ghost:hover { color: #f2c14e; border-color: #f2c14e; }
+
+.hidden { display: none !important; }

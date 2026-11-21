@@ -1,0 +1,231 @@
+// The Quiet Floor — level data.
+// Every floor is one room of the Meridian Archive, drawn top-down on a
+// 960 x 640 canvas. Walls and crates block movement AND sight; bushes hide
+// the player; shadow patches slow suspicion; ledger pages are the goal and
+// the service door only opens once every page is taken.
+
+function rect(x, y, w, h) {
+  return { x, y, w, h };
+}
+
+const BORDER = [
+  rect(0, 0, 960, 24),
+  rect(0, 616, 960, 24),
+  rect(0, 0, 24, 640),
+  rect(936, 0, 24, 640),
+];
+
+export const LEVELS = [
+  {
+    name: 'FLOOR 1 — THE ARCHIVE',
+    subtitle: 'Two guards, three pages. Learn their rounds.',
+    walls: [
+      ...BORDER,
+      rect(320, 24, 24, 200),
+      rect(320, 340, 24, 276),
+      rect(640, 24, 24, 220),
+      rect(640, 320, 24, 296),
+      rect(24, 400, 400, 24),
+      rect(600, 400, 336, 24),
+    ],
+    crates: [
+      rect(420, 120, 64, 64),
+      rect(760, 220, 64, 64),
+      rect(120, 500, 64, 64),
+      rect(820, 470, 64, 64),
+      rect(500, 500, 64, 64),
+    ],
+    bushes: [
+      rect(150, 150, 90, 70),
+      rect(700, 300, 90, 70),
+      rect(420, 300, 80, 60),
+      rect(180, 330, 80, 60),
+    ],
+    shadows: [
+      rect(60, 60, 180, 120),
+      rect(700, 480, 180, 110),
+      rect(380, 60, 180, 90),
+    ],
+    pages: [
+      { x: 90, y: 90 },
+      { x: 880, y: 90 },
+      { x: 480, y: 560 },
+    ],
+    exit: rect(872, 536, 56, 76),
+    playerStart: { x: 70, y: 560 },
+    pebbles: 3,
+    guards: [
+      {
+        name: 'Old Marek',
+        waypoints: [[120, 120], [280, 120], [280, 330], [120, 330]],
+        loop: true,
+        speed: 62,
+        viewRange: 175,
+        viewAngle: 1.25,
+        pause: 1.2,
+      },
+      {
+        name: 'Sister Anselm',
+        waypoints: [[700, 120], [880, 140], [880, 330], [700, 330]],
+        loop: true,
+        speed: 58,
+        viewRange: 175,
+        viewAngle: 1.25,
+        pause: 1.4,
+      },
+    ],
+  },
+  {
+    name: 'FLOOR 2 — THE GALLERY',
+    subtitle: 'Three guards, longer lanterns. Patience pays.',
+    walls: [
+      ...BORDER,
+      rect(300, 24, 24, 236),
+      rect(300, 360, 24, 256),
+      rect(660, 24, 24, 176),
+      rect(660, 300, 24, 316),
+      rect(24, 320, 200, 24),
+      rect(420, 320, 240, 24),
+      rect(760, 320, 176, 24),
+    ],
+    crates: [
+      rect(460, 120, 56, 56),
+      rect(460, 460, 56, 56),
+      rect(180, 470, 56, 56),
+      rect(800, 150, 56, 56),
+      rect(120, 140, 56, 56),
+      rect(820, 470, 56, 56),
+    ],
+    bushes: [
+      rect(350, 120, 80, 60),
+      rect(620, 470, 80, 60),
+      rect(60, 360, 80, 60),
+      rect(830, 300, 80, 60),
+    ],
+    shadows: [
+      rect(60, 60, 200, 110),
+      rect(700, 480, 200, 110),
+      rect(400, 260, 160, 60),
+    ],
+    pages: [
+      { x: 90, y: 90 },
+      { x: 880, y: 90 },
+      { x: 880, y: 560 },
+    ],
+    exit: rect(52, 536, 56, 76),
+    playerStart: { x: 480, y: 580 },
+    pebbles: 3,
+    guards: [
+      {
+        name: 'Old Marek',
+        waypoints: [[340, 80], [620, 80], [620, 280], [340, 280]],
+        loop: true,
+        speed: 72,
+        viewRange: 190,
+        viewAngle: 1.22,
+        pause: 1.0,
+      },
+      {
+        name: 'Sister Anselm',
+        waypoints: [[720, 120], [900, 120], [900, 290], [720, 290]],
+        loop: true,
+        speed: 70,
+        viewRange: 190,
+        viewAngle: 1.22,
+        pause: 1.0,
+      },
+      {
+        name: 'Young Perrin',
+        waypoints: [[340, 380], [620, 380], [620, 560], [340, 560]],
+        loop: true,
+        speed: 78,
+        viewRange: 185,
+        viewAngle: 1.3,
+        pause: 0.7,
+      },
+    ],
+  },
+  {
+    name: 'FLOOR 3 — THE VAULT',
+    subtitle: 'Four guards, no easy corner. Be a ghost.',
+    walls: [
+      ...BORDER,
+      rect(240, 24, 24, 276),
+      rect(240, 380, 24, 236),
+      rect(720, 24, 24, 216),
+      rect(720, 340, 24, 276),
+      rect(24, 200, 136, 24),
+      rect(340, 200, 280, 24),
+      rect(800, 200, 136, 24),
+      rect(24, 440, 156, 24),
+      rect(360, 440, 280, 24),
+      rect(780, 440, 156, 24),
+    ],
+    crates: [
+      rect(360, 80, 56, 56),
+      rect(600, 60, 56, 56),
+      rect(170, 250, 56, 56),
+      rect(760, 260, 56, 56),
+      rect(360, 520, 56, 56),
+      rect(600, 540, 56, 56),
+    ],
+    bushes: [
+      rect(280, 240, 80, 60),
+      rect(660, 240, 80, 60),
+      rect(280, 380, 80, 60),
+      rect(660, 380, 80, 60),
+    ],
+    shadows: [
+      rect(60, 60, 160, 100),
+      rect(760, 500, 160, 100),
+      rect(400, 280, 160, 80),
+    ],
+    pages: [
+      { x: 90, y: 90 },
+      { x: 880, y: 90 },
+      { x: 90, y: 560 },
+      { x: 880, y: 560 },
+    ],
+    exit: rect(440, 556, 80, 56),
+    playerStart: { x: 480, y: 80 },
+    pebbles: 4,
+    guards: [
+      {
+        name: 'Old Marek',
+        waypoints: [[300, 160], [680, 160]],
+        loop: false,
+        speed: 84,
+        viewRange: 205,
+        viewAngle: 1.2,
+        pause: 0.8,
+      },
+      {
+        name: 'Sister Anselm',
+        waypoints: [[120, 260], [120, 340], [480, 340]],
+        loop: false,
+        speed: 82,
+        viewRange: 205,
+        viewAngle: 1.2,
+        pause: 0.8,
+      },
+      {
+        name: 'Young Perrin',
+        waypoints: [[880, 260], [880, 330], [500, 330]],
+        loop: false,
+        speed: 86,
+        viewRange: 200,
+        viewAngle: 1.25,
+        pause: 0.6,
+      },
+      {
+        name: 'Captain Ivo',
+        waypoints: [[300, 480], [680, 480]],
+        loop: false,
+        speed: 80,
+        viewRange: 210,
+        viewAngle: 1.15,
+        pause: 0.9,
+      },
+    ],
+  },
+];

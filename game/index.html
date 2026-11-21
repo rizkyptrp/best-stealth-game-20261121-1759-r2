@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Quiet Floor — a stealth game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" width="960" height="640"></canvas>
+
+  <div id="hud" class="hidden">
+    <div class="hud-left">
+      <span id="hud-level">FLOOR 1 — THE ARCHIVE</span>
+      <span id="hud-objective">LEDGER PAGES <b id="hud-pages">0/3</b></span>
+      <span id="hud-exit">EXIT: LOCKED</span>
+    </div>
+    <div class="hud-center">
+      <div id="suspicion-wrap" title="Guard suspicion">
+        <span class="hud-label">SUSPICION</span>
+        <div id="suspicion-bar"><div id="suspicion-fill"></div></div>
+        <span id="suspicion-state">CALM</span>
+      </div>
+    </div>
+    <div class="hud-right">
+      <span id="hud-pebbles" title="Pebbles left — click to throw">PEBBLES <b id="hud-pebble-count">3</b></span>
+      <span id="hud-timer">00:00</span>
+      <button id="btn-mute" type="button" title="Mute (M)">SOUND ON</button>
+      <button id="btn-pause" type="button" title="Pause (P)">PAUSE</button>
+    </div>
+  </div>
+
+  <div id="banner" class="hidden"></div>
+  <div id="toast" class="hidden"></div>
+
+  <div id="screen-title" class="overlay">
+    <h1>THE QUIET FLOOR</h1>
+    <p class="tagline">A night infiltration at the Meridian Archive.</p>
+    <p class="story">You are <b>Wren</b>, a courier with light fingers. Three ledger pages
+    sleep in the archive's vaults, and the night guards walk their rounds with
+    lanterns and long memories. Slip past them, take every page, and leave
+    through the service door — unseen.</p>
+    <div class="howto">
+      <div><b>MOVE</b> — WASD / Arrow keys</div>
+      <div><b>SNEAK</b> — hold Shift (slower, quieter, harder to spot)</div>
+      <div><b>THROW A PEBBLE</b> — click the floor (guards investigate the sound)</div>
+      <div><b>HIDE</b> — crouch in the bushes; guards cannot see you there unless close</div>
+      <div><b>PAUSE</b> — P &nbsp;·&nbsp; <b>RESTART</b> — R &nbsp;·&nbsp; <b>MUTE</b> — M</div>
+    </div>
+    <p class="rules">A guard's cone is what he can see. Fill his suspicion and he raises the
+    alarm — break line of sight and he will search, then give up and go back to his round.
+    Get caught, and the night is over.</p>
+    <button id="btn-start" type="button">BEGIN THE NIGHT</button>
+    <p class="tiny">3 floors · 2–4 guards each · no one needs to know you were here</p>
+  </div>
+
+  <div id="screen-pause" class="overlay hidden">
+    <h1>PAUSED</h1>
+    <p class="tagline">The guards keep their rounds. You keep your breath.</p>
+    <button id="btn-resume" type="button">RESUME</button>
+    <button id="btn-restart-pause" type="button" class="ghost">RESTART FLOOR</button>
+  </div>
+
+  <div id="screen-win" class="overlay hidden">
+    <h1 id="win-title">FLOOR CLEAR</h1>
+    <p class="tagline" id="win-sub">Every page is yours. The service door sighs open.</p>
+    <p class="stats" id="win-stats"></p>
+    <button id="btn-next" type="button">NEXT FLOOR</button>
+    <button id="btn-replay-win" type="button" class="ghost">REPLAY FLOOR</button>
+  </div>
+
+  <div id="screen-lose" class="overlay hidden">
+    <h1>CAUGHT</h1>
+    <p class="tagline" id="lose-sub">A lantern swings round. A hand closes on your shoulder.</p>
+    <p class="stats" id="lose-stats"></p>
+    <button id="btn-retry" type="button">TRY AGAIN</button>
+    <button id="btn-title-lose" type="button" class="ghost">BACK TO TITLE</button>
+  </div>
+
+  <div id="screen-complete" class="overlay hidden">
+    <h1>GHOST OF THE ARCHIVE</h1>
+    <p class="tagline">All three floors. Every page. Not one guard sure he saw a thing.</p>
+    <p class="stats" id="complete-stats"></p>
+    <button id="btn-again" type="button">PLAY AGAIN FROM FLOOR 1</button>
+  </div>
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>
