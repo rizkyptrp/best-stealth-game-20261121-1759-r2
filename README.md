@@ -1,8 +1,8 @@
 # The Quiet Floor
 
-![Best Stealth Game](https://make.fun/badge/best-stealth-game-20261121-1759.svg)
-![Rank](https://make.fun/badge/best-stealth-game-20261121-1759/rizkyptrp/best-stealth-game-20261121-1759-r2/rank.svg)
-![Reward](https://make.fun/badge/best-stealth-game-20261121-1759/rizkyptrp/best-stealth-game-20261121-1759-r2/reward.svg)
+[![make.fun · best-stealth-game-20261121-1759](https://make.fun/badge/best-stealth-game-20261121-1759.svg)](https://make.fun/bounty/best-stealth-game-20261121-1759?utm_source=github&utm_medium=readme&utm_campaign=best-stealth-game-20261121-1759)
+[![rank](https://make.fun/badge/best-stealth-game-20261121-1759/rizkyptrp/best-stealth-game-20261121-1759-r2/rank.svg)](https://make.fun/bounty/best-stealth-game-20261121-1759/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-stealth-game-20261121-1759)
+[![reward](https://make.fun/badge/best-stealth-game-20261121-1759/rizkyptrp/best-stealth-game-20261121-1759-r2/reward.svg)](https://make.fun/bounty/best-stealth-game-20261121-1759?utm_source=github&utm_medium=readme&utm_campaign=best-stealth-game-20261121-1759)
 
 A top-down 2D stealth game that runs entirely offline in a desktop browser.
 You are **Wren**, a courier with light fingers, slipping through the Meridian
